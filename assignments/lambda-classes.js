@@ -1,7 +1,4 @@
 // CODE here for your Lambda Classes
-// Instructors and students being siblings
-// PM's are children of the instructor 
-
 
 // Person === main class 
 
@@ -35,7 +32,7 @@ class Instructor extends Person {
 
 // Student class comes from Person class 
 
-class Students extends Person {
+class Student extends Person {
     constructor(attributes){
         super(attributes);
         this.name = attributes.name;
@@ -45,14 +42,14 @@ class Students extends Person {
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
     }
-    listSubjects(subject){
-        return (`Today we are learning about ${subject}`)
+    listSubjects(){
+        return (`${this.favSubjects}`);
     }
     PRAssignment(subject){
-        return (`${student.name} has submitted a PR for ${subject}`)
+        return (`${this.name} has submitted a PR for ${subject}`)
     }
     sprintChallenge(subject){
-        return (`{student.name} has begun sprint challenge on  ${subject}`)
+        return (`${this.name} has begun sprint challenge on  ${subject}`)
     }
 }
 
@@ -65,11 +62,11 @@ class ProjectManager extends Instructor {
         this.gradClassName = attributes.gradClassName;
         this.favInstructor = attributes.favInstructor;
     }
-    standUp(name,channel){
-        return (`${name} announces to ${channel} @channel standby times!`)
+    standUp(channel){
+        return (`${this.name} announces to ${channel} @channel standby times!`)
     }
-    debugsCode(){
-        return (`${name} debugs ${student.name}'s code on ${subject}`)
+    debugsCode(student,subject){
+        return (`${this.name} debugs ${student.name}'s code on ${subject}`)
     }
 
 }
@@ -78,6 +75,7 @@ class ProjectManager extends Instructor {
 //create 2-3 objects for each class 
 
 // Person
+
 const personOne = new Person ({
     name: 'Constance',
     age: 42,
@@ -89,8 +87,10 @@ const personTwo = new Person ({
     age: 26,
     location: 'Baton Rouge'
 })
+
 // student 
-const studentOne = new Students ({
+
+const studentOne = new Student ({
     name: 'Mauricio',
     age: 23,
     location: 'Austin',
@@ -103,7 +103,7 @@ const studentOne = new Students ({
     ]
 })
 
-const studentTwo = new Students ({
+const studentTwo = new Student ({
     name: 'Jordan',
     age: 32,
     location: 'New York',
@@ -162,14 +162,19 @@ const PMTwo = new ProjectManager ({
 
 console.log(personOne.speak());
 console.log(personTwo.speak());
+console.log(instructorOne.grade(studentOne,'html'));
+console.log(instructorOne.demo('Javascript'));
+console.log(instructorTwo.demo('PHP'));
+console.log(instructorTwo.grade(studentTwo,'JS'));
+console.log(PMOne.standUp('Web23'));
+console.log(PMTwo.standUp('WebPT4'));
+console.log(PMOne.debugsCode(studentOne,PMOne.favLanguage));
+console.log(PMTwo.debugsCode(studentTwo,PMTwo.favLanguage));
 console.log(studentOne.listSubjects());
-console.log(studentTwo.Students());
-console.log(instructorOne.Instructor());
-console.log(instructorTwo.Instructor());
-console.log(PMOne.ProjectManager());
-console.log(PMTwo.ProjectManager());
-
-
-
+console.log(studentTwo.listSubjects());
+console.log(studentOne.sprintChallenge('JS'));
+console.log(studentTwo.sprintChallenge('CSS'));
+console.log(studentOne.PRAssignment('Web Dev'));
+console.log(studentTwo.PRAssignment('PHP'));
 
 
