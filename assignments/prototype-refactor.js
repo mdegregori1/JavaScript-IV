@@ -42,7 +42,7 @@ class GameObject {
   
   /*
     === Humanoid (Having an appearance or character resembling that of a human.) ===
-    * team
+    * team !
     * weapons
     * language
     * greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
